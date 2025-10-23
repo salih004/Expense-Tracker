@@ -15,7 +15,7 @@
 << link here >>
 
 ## Database Schema
-
+![Database Schema](<database schema.png>)
 
 ## API Specification
 
