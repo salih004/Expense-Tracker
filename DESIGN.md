@@ -12,7 +12,7 @@
 
 ## Project Board
 
-<< link here >>
+[Project Board](https://github.com/users/salih004/projects/2/views/1)
 
 ## Database Schema
 ![Database Schema](<database schema.png>)
