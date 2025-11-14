@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId       Int        @id @default(autoincrement()) @map("user_id")
+  name         String     @db.VarChar(255)
+  email        String     @unique @db.VarChar(255)
+  passwordHash String     @map("password_hash") @db.VarChar(255)
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  categories   Category[]
+  expenses     Expense[]
+
+  @@map("User")
+}
+
+model Category {
+  categoryId  Int      @id @default(autoincrement()) @map("category_id")
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  userId      Int      @map("user_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user        User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  expenses    Expense[]
+
+  @@map("Category")
+}
+
+model Expense {
+  expenseId  Int       @id @default(autoincrement()) @map("expense_id")
+  amount     Decimal   @db.Decimal(10, 2)
+  title      String?   @db.Text
+  date       String    @db.VarChar(10)
+  userId     Int       @map("user_id")
+  categoryId Int?      @map("category_id")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  user       User      @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  category   Category? @relation(fields: [categoryId], references: [categoryId], onDelete: SetNull)
+
+  @@map("Expense")
+}
