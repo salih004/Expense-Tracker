@@ -16,9 +16,6 @@
 
 ## Agile Practice
 
-## Progress Summary
-
-
 
 Sprint Update — Agile Practice
 
@@ -56,12 +53,13 @@ Successes
     •    Environment is set up and ready for authentication work.
     •    Team communicated consistently and resolved blockers quickly.
 
-⸻
+
+
+## Progress Summary
 
 Sprint Summary
 
 We sprinted effectively, addressed blockers early, and kept steady momentum. Everyone completed their part, the database and backend are functioning, and the workflow stayed aligned with agile practices. The sprint went well overall, and the project is on track.
-
 
 
 Login
