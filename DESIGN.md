@@ -12,7 +12,7 @@
 
 ## Project Board
 
-[<< link here >>](https://github.com/users/salih004/projects/2)
+[Project Board](https://github.com/users/salih004/projects/2)
 
 ## Database Schema
 ![Database Schema](<database schema.png>)
@@ -25,7 +25,7 @@
 | /Expense/{ExpenseId}   | GET      | `{}`                                               | `{title: '', date: '', amount: 0}`                   | Get a single expense          |
 | /Expense/{UserId}      | POST     | `{title: '', date: '', amount: 0}`                 | `{message: 'success/error'}`                         | Create a new expense          |
 | /Expense/{ExpenseId}   | DELETE   | `{}`                                               | `{message: 'success/error'}`                         | Delete an expense             |
-| /User/{UserId}         | GET      | `{}`                                               | `{username: '', date: '', amount: 0}`                | Get user data                 |
+| /User/{UserId}         | GET      | `{}`                                               | `{userId: 123, username: '', email: ''}`             | Get user data                 |
 | /User                  | POST     | `{username: '', password: ''}`                     | `{message: 'success/error'}`                         | Create a new user             |
 | /Category/{UserId}     | GET      | `{}`                                               | `[{name: '', description: '', date: '', amount: 0}]` | Get all categories for user   |
 | /Category              | POST     | `{name: '', description: '', date: '', amount: 0}` | `{message: 'success/error'}`                         | Create a new category         |
