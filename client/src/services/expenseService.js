@@ -1,7 +1,7 @@
 import { apiFetch } from './api';
 
 export const get = async (userId) => {
-  const response = await apiFetch(`/api/expense/${userId}`);
+  const response = await apiFetch(`/expense/${userId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -21,7 +21,7 @@ export const get = async (userId) => {
 };
 
 export const add = async (userId, expense) => {
-  const response = await apiFetch(`/api/expense/${userId}`, {
+  const response = await apiFetch(`/expense/${userId}`, {
     method: 'POST',
     body: JSON.stringify(expense)
   });
@@ -33,5 +33,17 @@ export const add = async (userId, expense) => {
   }
 
   // server returns created expense in data.data
+  return data;
+};
+
+export const deleteExpense = async (userId, expenseId) => {
+  const response = await apiFetch(`/expense/${userId}/${expenseId}`, { method: 'DELETE' });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Failed to add expense');
+  }
+
   return data;
 };

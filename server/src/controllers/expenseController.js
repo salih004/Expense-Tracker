@@ -67,7 +67,31 @@ const createExpense = async (req, res) => {
   }
 };
 
+const deleteExpense = async (req, res) => {
+  const { userId, expenseId } = req.params;
+
+  try {
+    await prisma.expense.delete({
+      where: { userId: Number(userId), expenseId: Number(expenseId) }
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'Expense deleted successfully'
+    });
+  } catch (error) {
+    console.error('Error deleting expense:', error);
+
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to delete expense',
+      error: error.message
+    })
+  }
+}
+
 module.exports = {
   getUserExpenses,
-  createExpense
+  createExpense,
+  deleteExpense
 };

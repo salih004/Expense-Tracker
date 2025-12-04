@@ -36,8 +36,8 @@ const App = () => {
     setToken(null);
   };
 
-  const addExpenseHandler = expense => {
-    expenseService.add(user.user_id, expense)
+  const addExpenseHandler = async expense => {
+    await expenseService.add(user.user_id, expense)
       .then((res) => {
         const created = res.data;
         const [year, month, day] = created.date.split('-');
@@ -48,6 +48,14 @@ const App = () => {
           date: new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
         };
         setExpenses(prev => [expenseWithDateObj, ...prev]);
+      })
+      .catch(err => console.error(err));
+  };
+
+  const deleteExpenseHandler = async expenseId => {
+    await expenseService.deleteExpense(user.user_id, expenseId)
+      .then((res) => {
+        setExpenses(expenses.filter(x => x.id !== expenseId));
       })
       .catch(err => console.error(err));
   };
@@ -63,7 +71,7 @@ const App = () => {
         <button onClick={handleLogout}>Logout</button>
       </div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <DisplayExpenses expenses_list={expenses} />
+      <DisplayExpenses expenses_list={expenses} deleteExpenseHandler={deleteExpenseHandler}/>
     </div>
   );
 };

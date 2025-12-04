@@ -33,9 +33,12 @@ function DisplayExpenses(props) {
           (filteredExpenses.map((i) => (
             <ExpenseItem
               key={i.id}
+              id={i.id}
               title={i.title}
               amount={i.amount}
               date={i.date}
+
+              deleteExpenseHandler={props.deleteExpenseHandler}
             />
           ))
           )}

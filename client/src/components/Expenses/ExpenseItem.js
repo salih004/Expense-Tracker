@@ -21,7 +21,7 @@ function ExpenseItem(props) {
           <div className="expense-item__price">${props.amount}</div>
           <button 
             className="expense-item__delete" 
-            onClick={() => props.onDelete && props.onDelete(props.id)}
+            onClick={() => props.deleteExpenseHandler(props.id)}
             title="Delete expense"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
