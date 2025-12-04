@@ -1,7 +1,7 @@
 import { apiFetch } from './api';
 
 export const get = async (userId) => {
-  const response = await apiFetch(`/expense/${userId}`);
+  const response = await apiFetch(`/api/expense/${userId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -9,9 +9,10 @@ export const get = async (userId) => {
   }
 
   return data.items.map(x => {
-    const [year, month, day] = x.date.split('T')[0].split('-');
+    // server stores date as YYYY-MM-DD
+    const [year, month, day] = x.date.split('-');
     return {
-      id: x.expense_id,
+      id: x.expenseId,
       title: x.title,
       amount: Number(x.amount),
       date: new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
@@ -20,7 +21,7 @@ export const get = async (userId) => {
 };
 
 export const add = async (userId, expense) => {
-  const response = await apiFetch(`/expense/${userId}`, {
+  const response = await apiFetch(`/api/expense/${userId}`, {
     method: 'POST',
     body: JSON.stringify(expense)
   });
@@ -31,5 +32,6 @@ export const add = async (userId, expense) => {
     throw new Error(data.message || 'Failed to add expense');
   }
 
+  // server returns created expense in data.data
   return data;
 };

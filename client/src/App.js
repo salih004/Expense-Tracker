@@ -37,16 +37,17 @@ const App = () => {
   };
 
   const addExpenseHandler = expense => {
-    console.log(expense)
-
     expenseService.add(user.user_id, expense)
-      .then(() => {
-        const [year, month, day] = expense.date.split('-');
+      .then((res) => {
+        const created = res.data;
+        const [year, month, day] = created.date.split('-');
         const expenseWithDateObj = {
-          ...expense,
+          id: created.expenseId,
+          title: created.title,
+          amount: Number(created.amount),
           date: new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
         };
-        setExpenses([expenseWithDateObj, ...expenses]);
+        setExpenses(prev => [expenseWithDateObj, ...prev]);
       })
       .catch(err => console.error(err));
   };

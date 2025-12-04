@@ -14,7 +14,7 @@ const Login = ({ onLogin }) => {
     setError('');
     setLoading(true);
 
-    const endpoint = isLogin ? '/user/login' : '/user/register';
+    const endpoint = isLogin ? '/api/user/login' : '/api/user/register';
     const body = isLogin
       ? { email, password }
       : { name, email, password };

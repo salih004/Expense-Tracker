@@ -5,12 +5,7 @@ import "./NewExpense.css";
 const NewExpense = (props) => {
 
   const saveExpenseDataHandler = (enteredExpenseData) => {
-    const expenseData = {
-      ...enteredExpenseData,
-      id: Math.random().toString()
-    }
-
-    props.onAddExpense(expenseData);
+    props.onAddExpense(enteredExpenseData);
   }
 
   const [vis, setVis] = useState(false);
