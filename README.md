@@ -7,8 +7,8 @@ Welcome to Expense Tracker, a web application built with React.js that helps you
 
 ## Features
 
-- **Expense Categories:** Categorize your expenses for better organization and analysis.
-- **Add and Delete Expenses:** Easily add new expenses.
+- **Add Expenses:** Easily add new expenses.
+- **Delete Expenses:** Delete existing expenses.
 - **Transaction History:** View a list of all your transactions along with the date.
 - **Filter and Search:** Filter expenses by category and search for specific transactions.
 - **Expense Summary:** Get a quick overview of your total income and expenses.
@@ -16,7 +16,7 @@ Welcome to Expense Tracker, a web application built with React.js that helps you
 
 ## Live Demo
 
-You can access the live demo of the Expense Tracker by clicking [here](https://my-expense-tracker.onrender.com/).
+You can access the live demo of the Expense Tracker by clicking [Expense Tracker](https://expense-tracker-frontend-production-bfbd.up.railway.app/).
 
 ## Getting Started
 
@@ -37,16 +37,35 @@ cd Expense-Tracker
 3. Install the dependencies:
 
 ```bash
-npm install
+npm run install-all
 ```
 
-4. Start the development server:
+4. Set env variables
+
+```text
+Copy .env.example into .env and set DATABASE_URL to local postgres connection string
+```
+
+
+5. Init DB
+Generate prisma client and apply migrations
 
 ```bash
-npm start
+npm run prisma:generate
+npm run prisma:migrate
+```
+7. Start the backend server (from server directory)
+
+```bash
+npm run dev
 ```
 
-5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the application in action.
+8. Start the front end (from client directory)
+```bash
+npm run start
+```
+
+9. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the application in action.
 
 ## Technologies Used
 
