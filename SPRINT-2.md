@@ -5,7 +5,7 @@ Deployed URL: https://expense-tracker-frontend-production-bfbd.up.railway.app/
 
             Team Contributions
 
-You (Salih):
+Salih:
 
 Designed and implemented the UI trash-icon delete button.
 
