@@ -26,7 +26,7 @@ function DisplayExpenses(props) {
 
         <ExpensesChart expenses={filteredExpenses} />
 
-        {filteredExpenses.length === 0 && (<p>Mo expenses found.</p>)}
+        {filteredExpenses.length === 0 && (<p>No expenses found.</p>)}
 
         {
           filteredExpenses.length > 0 &&
